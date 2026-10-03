@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Smart Cookie Web Portal</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family:
+                "Inter",
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #11121c,
+                    #2b2750
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 1000px;
+
+            min-height: 620px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        /* LEFT SIDE */
+
+        .brand-section {
+            background:
+                linear-gradient(
+                    145deg,
+                    #6c63ff,
+                    #5148d8
+                );
+
+            color: white;
+
+            padding: 60px 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .brand-logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 30px;
+        }
+
+        .cookie-icon {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .brand-section h1 {
+            font-size: 38px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .brand-section p {
+            font-size: 16px;
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        /* RIGHT SIDE */
+
+        .login-section {
+            padding: 60px 50px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-header {
+            margin-bottom: 35px;
+        }
+
+        .login-header h2 {
+            font-size: 32px;
+            color: #25263a;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #77798f;
+            font-size: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: #25263a;
+
+            font-size: 14px;
+
+            font-weight: 700;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 14px 16px;
+
+            border: 1px solid #dcdde7;
+
+            border-radius: 10px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #6c63ff;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(108, 99, 255, 0.12);
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 70px;
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #6c63ff;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+        .login-options {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .remember {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            font-size: 14px;
+
+            color: #55566b;
+        }
+
+        .remember input {
+            width: 16px;
+            height: 16px;
+
+            accent-color: #6c63ff;
+
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #6c63ff;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #6c63ff;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #5148d8;
+
+            transform: translateY(-1px);
+        }
+
+        .register-link {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #77798f;
+
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #6c63ff;
+
+            text-decoration: none;
+
+            font-weight: 800;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 800px) {
+
+            .auth-container {
+                grid-template-columns: 1fr;
+            }
+
+            .brand-section {
+                padding: 40px;
+            }
+
+            .brand-section h1 {
+                font-size: 30px;
+            }
+
+            .login-section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .brand-section,
+            .login-section {
+                padding: 30px 25px;
+            }
+
+            .login-options {
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 12px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="auth-container">
+
+        <!-- LEFT SIDE -->
+
+        <section class="brand-section">
+
+            <div class="cookie-icon">
+                🍪
+            </div>
+
+            <div class="brand-logo">
+                Smart Cookie
+            </div>
+
+            <h1>
+                Welcome Back!
+            </h1>
+
+            <p>
+                Sign in to access your Smart Cookie
+                Web Portal and manage your account
+                securely.
+            </p>
+
+            <ul class="feature-list">
+
+                <li>
+                    ✓ Secure authentication
+                </li>
+
+                <li>
+                    ✓ Cookie-based preferences
+                </li>
+
+                <li>
+                    ✓ Personalized dashboard
+                </li>
+
+                <li>
+                    ✓ Role-based access
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="login-section">
+
+            <div class="login-header">
+
+                <h2>
+                    Sign In
+                </h2>
+
+                <p>
+                    Enter your credentials to continue.
+                </p>
+
+            </div>
+
+
+            <form
+                action="login"
+                method="post"
+                id="loginForm">
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Enter your password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle">
+
+                            Show
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONS -->
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            name="rememberMe"
+                            id="rememberMe"
+                            value="true">
+
+                        Remember Me
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot-link">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    Login
+
+                </button>
+
+
+                <!-- REGISTER -->
+
+                <div class="register-link">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </div>
+
+
+    <script>
+
+        /* =========================
+           SHOW / HIDE PASSWORD
+        ========================== */
+
+        const password =
+            document.getElementById("password");
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+
+        passwordToggle.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    password.type === "password"
+                ) {
+
+                    password.type = "text";
+
+                    passwordToggle.textContent =
+                        "Hide";
+
+                } else {
+
+                    password.type = "password";
+
+                    passwordToggle.textContent =
+                        "Show";
+
+                }
+
+            }
+        );
+
+
+        /* =========================
+           REMEMBERED EMAIL COOKIE
+        ========================== */
+
+        function getCookie(name) {
+
+            const cookies =
+                document.cookie.split(";");
+
+
+            for (let cookie of cookies) {
+
+                cookie = cookie.trim();
+
+
+                if (
+                    cookie.startsWith(
+                        name + "="
+                    )
+                ) {
+
+                    return decodeURIComponent(
+                        cookie.substring(
+                            name.length + 1
+                        )
+                    );
+
+                }
+
+            }
+
+            return null;
+        }
+
+
+        const rememberedEmail =
+            getCookie("rememberedEmail");
+
+
+        if (rememberedEmail) {
+
+            document.getElementById("email").value =
+                rememberedEmail;
+
+            document.getElementById("rememberMe").checked =
+                true;
+
+        }
+
+    </script>
+
+</body>
+
+</html>

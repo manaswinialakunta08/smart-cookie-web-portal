@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Smart Cookie</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <!-- Left Side -->
+        <section class="auth-brand">
+
+            <div class="brand-logo">
+                <div class="cookie-icon">🍪</div>
+                <span>Smart Cookie</span>
+            </div>
+
+            <div class="brand-content">
+                <span class="badge">SMART WEB PORTAL</span>
+
+                <h1>
+                    Your smarter,
+                    <span>digital experience.</span>
+                </h1>
+
+                <p>
+                    Create your account and experience a secure,
+                    personalized web portal built around you.
+                </p>
+
+                <div class="feature-list">
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Secure Access</strong>
+                            <p>Your account stays protected.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Personalized Experience</strong>
+                            <p>Save your preferences with cookies.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature">
+                        <div class="feature-icon">✓</div>
+                        <div>
+                            <strong>Easy to Manage</strong>
+                            <p>Access your profile from one place.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="copyright">
+                © 2026 Smart Cookie Web Portal
+            </p>
+
+        </section>
+
+
+        <!-- Right Side -->
+        <section class="auth-form-section">
+
+            <div class="auth-card">
+
+                <div class="mobile-logo">
+                    🍪 <span>Smart Cookie</span>
+                </div>
+
+                <div class="form-header">
+
+                    <span class="form-label">GET STARTED</span>
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Enter your details below to create your Smart Cookie account.
+                    </p>
+
+                </div>
+
+
+                <form action="register" method="post" id="registerForm">
+
+                    <!-- Name -->
+                    <div class="form-group">
+
+                        <label for="name">Full Name</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👤</span>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="email">Email Address</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✉</span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="password">Password</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔒</span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                                aria-label="Show password">
+                                👁
+                            </button>
+
+                        </div>
+
+                        <div class="password-strength">
+
+                            <div class="strength-bar">
+                                <span id="strengthBar"></span>
+                            </div>
+
+                            <span id="strengthText">
+                                Enter a password
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+
+                        <label for="confirmPassword">Confirm Password</label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔐</span>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                        <small id="passwordMessage"></small>
+
+                    </div>
+
+
+                    <!-- Terms -->
+                    <div class="terms">
+
+                        <label class="checkbox-container">
+
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                required
+                            >
+
+                            <span class="checkmark"></span>
+
+                            <span>
+                                I agree to the
+                                <a href="#">Terms & Conditions</a>
+                                and
+                                <a href="#">Privacy Policy</a>.
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button
+                        type="submit"
+                        class="register-btn">
+
+                        Create Account
+
+                        <span>→</span>
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-link">
+
+                    Already have an account?
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>
+
