@@ -1,140 +1,93 @@
 # Smart Cookie Web Portal
 
-A Java-based web portal for secure user authentication, role-based access control, profile management, and cookie-driven personalization. This project demonstrates how to build a servlet-based web application using Java, MySQL, and modern security practices such as BCrypt password hashing and session management.
+A Java servlet-based web application for user authentication, profile management, role-aware dashboards, and cookie-based personalization. The project demonstrates JDBC persistence with MySQL, BCrypt password hashing, and session management.
 
 ## Project Overview
 
-Smart Cookie Web Portal is a lightweight web application that allows users to:
+The portal lets users register, sign in, manage profile information, and save preferences. Accounts with the `ADMIN` role can access administrative pages. The application uses a layered, MVC-inspired structure with servlet controllers, data access code, and utility classes.
 
-- register for a new account
-- sign in with secure credentials
-- manage their profile information
-- persist personalization preferences using cookies
-- access role-specific dashboard views
-- interact with an admin dashboard when assigned administrative privileges
+This project is an educational example of Java web application development, servlet request handling, database access, authentication, and session and cookie management.
 
-The application is built using Jakarta Servlet technology and follows a classic MVC-inspired structure with controllers, data access objects, and utility classes.
+## Features
 
-## Why This Project
-
-This project is useful for learning and demonstrating:
-
-- Java web application development
-- servlet-based request handling
-- database connectivity with JDBC
-- secure password storage with BCrypt
-- session and cookie management
-- role-based access control in a web app
-- effective Maven-based project organization
-
-## Key Features
-
-- User registration with password hashing
-- Secure login flow with credential validation
+- User registration and login with BCrypt password hashing
 - Session-based authentication
-- “Remember Me” cookie functionality
-- Profile viewing and updating
-- Preference/theme storage using cookies
-- Admin-only dashboard access
-- MySQL persistence layer
-- Maven project structure for easy build and deployment
+- Role-aware dashboard access, including admin pages for `ADMIN` accounts
+- Profile viewing and editing
+- Remember-me and preference cookies
+- MySQL persistence through JDBC
+- Maven WAR packaging for Tomcat deployment
 
 ## Technology Stack
 
-- Java 27
-- Maven
-- Jakarta Servlet API 6.1.0
-- MySQL Connector/J 9.4.0
-- BCrypt via jbcrypt
-- JUnit 5
-- Apache Tomcat (or any servlet container compatible with Jakarta EE)
+| Technology | Use |
+| --- | --- |
+| Java 27 | Application language |
+| Jakarta Servlets 6.1 | Server-side request handling |
+| Apache Tomcat 11 | Servlet container |
+| Maven | Dependency management and WAR build |
+| MySQL | Relational database |
+| HTML, CSS, JavaScript | Web interface |
+| Git and GitHub | Version control and project hosting |
 
-## System Architecture
+The project also uses MySQL Connector/J, BCrypt (`jbcrypt`), and JUnit 5.
 
-The application follows a layered structure:
-
-1. Presentation Layer
-   - HTML pages and frontend assets in `src/main/webapp`
-   - Servlet controllers handling requests and responses
-
-2. Application Layer
-   - logic for login, registration, preferences, and profile operations
-
-3. Data Access Layer
-   - `UserDAO` manages database interactions
-
-4. Persistence Layer
-   - MySQL database stores user data and credentials
-
-5. Security Layer
-   - password hashes are stored and checked using BCrypt
-   - sessions restrict unauthorized access to private pages
-
-## Directory Structure
+## Project Structure
 
 ```text
 SmartWebPortal/
 ├── pom.xml
 ├── README.md
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/smartportal/
-│   │   │       ├── controller/
-│   │   │       │   ├── LoginServlet.java
-│   │   │       │   ├── RegisterServlet.java
-│   │   │       │   ├── DashboardServlet.java
-│   │   │       │   ├── AdminDashboardServlet.java
-│   │   │       │   ├── ProfileServlet.java
-│   │   │       │   ├── EditProfileServlet.java
-│   │   │       │   ├── SavePreferencesServlet.java
-│   │   │       │   ├── UpdateProfileServlet.java
-│   │   │       │   └── LogoutServlet.java
-│   │   │       ├── dao/
-│   │   │       │   └── UserDAO.java
-│   │   │       ├── model/
-│   │   │       │   └── User.java
-│   │   │       └── util/
-│   │   │           ├── DBConnection.java
-│   │   │           ├── PasswordUtil.java
-│   │   │           └── TestConnection.java
-│   │   └── webapp/
-│   │       ├── css/
-│   │       │   └── style.css
-│   │       ├── js/
-│   │       │   └── register.js
-│   │       ├── login.html
-│   │       ├── register.html
-│   │       ├── dashboard.html
-│   │       ├── index.jsp
-│   │       └── WEB-INF/
-│   └── test/
-│       └── java/
-├── target/
-└── .gitignore
+├── .gitignore
+└── src/
+    ├── main/
+    │   ├── java/com/smartportal/
+    │   │   ├── controller/
+    │   │   │   ├── AdminDashboardServlet.java
+    │   │   │   ├── DashboardServlet.java
+    │   │   │   ├── EditProfileServlet.java
+    │   │   │   ├── LoginServlet.java
+    │   │   │   ├── LogoutServlet.java
+    │   │   │   ├── PreferencesServlet.java
+    │   │   │   ├── ProfileServlet.java
+    │   │   │   ├── RegisterServlet.java
+    │   │   │   ├── SavePreferencesServlet.java
+    │   │   │   └── UpdateProfileServlet.java
+    │   │   └── util/
+    │   │       ├── DBConnection.java
+    │   │       ├── PasswordUtil.java
+    │   │       ├── TestConnection.java
+    │   │       ├── User.java
+    │   │       └── UserDAO.java
+    │   └── webapp/
+    │       ├── css/style.css
+    │       ├── images/
+    │       ├── js/register.js
+    │       ├── dashboard.html
+    │       ├── index.jsp
+    │       ├── login.html
+    │       ├── register.html
+    │       └── WEB-INF/web.xml
+    └── test/java/
 ```
 
 ## Prerequisites
 
-Before running this application, ensure that you have installed:
+- JDK 27
+- Maven 3.9 or later
+- MySQL 8.0 or later
+- Apache Tomcat 11
+- A code editor or IDE, such as IntelliJ IDEA, Eclipse, or VS Code
 
-- JDK 27 or later
-- Maven 3.9+
-- MySQL 8.0 or newer
-- Apache Tomcat 10.1+ or another Jakarta-compatible servlet container
-- A code editor or IDE such as IntelliJ IDEA, Eclipse, or VS Code
+## Database Configuration
 
-## Database Setup
-
-Create a MySQL database for the application:
+The application requires MySQL, normally listening on port `3306`. Create the database and users table:
 
 ```sql
 CREATE DATABASE smart_web_portal;
-```
 
-Create the users table:
+USE smart_web_portal;
 
-```sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -144,156 +97,95 @@ CREATE TABLE users (
 );
 ```
 
-This table stores the user’s basic information, password hash, and role.
+Database settings are read from environment variables. `DB_URL` defaults to `jdbc:mysql://localhost:3306/smart_web_portal`, and `DB_USER` defaults to `root`. `DB_PASSWORD` must be set to the password for your local MySQL account. No database password is included in this repository.
 
-## Environment Configuration
-
-This project reads database credentials from environment variables. Do not hardcode actual secrets in the repository.
-
-### Linux/macOS
-
-```bash
-export DB_URL="jdbc:mysql://localhost:3306/smart_web_portal"
-export DB_USER="your_db_user"
-export DB_PASSWORD="your_db_password"
-```
-
-### Windows PowerShell
+In Windows PowerShell, set the variables before starting Tomcat:
 
 ```powershell
 $env:DB_URL = "jdbc:mysql://localhost:3306/smart_web_portal"
-$env:DB_USER = "your_db_user"
-$env:DB_PASSWORD = "your_db_password"
+$env:DB_USER = "your_mysql_user"
+$env:DB_PASSWORD = "<your_mysql_password>"
 ```
 
-### Windows Command Prompt
+Replace the example values with your own local settings. Keep the password private and do not commit it to version control. If Tomcat runs as a service, configure these variables in the service's environment and restart it.
 
-```cmd
-set DB_URL=jdbc:mysql://localhost:3306/smart_web_portal
-set DB_USER=your_db_user
-set DB_PASSWORD=your_db_password
-```
+## Installation and Setup
 
-> Important: Replace the sample values above with your own local credentials. Never commit real secrets to version control.
+1. Install the prerequisites listed above.
+2. Create the MySQL database and table using the SQL statements in [Database Configuration](#database-configuration).
+3. Configure the database environment variables for the Tomcat process.
+4. From the project root, build the WAR as described in [Build the Project](#build-the-project).
+5. Confirm Tomcat is configured to listen on port `8081`, then deploy the WAR as described below.
 
-## Building the Project
+## Build the Project
 
-From the root directory of the project, run:
+Run this command from the directory containing `pom.xml`:
 
 ```bash
 mvn clean package
 ```
 
-This will compile the Java sources and produce a WAR package in the `target` directory.
-
-## Running the Application
-
-### Option 1: Deploy to Tomcat
-
-1. Build the project:
-
-```bash
-mvn clean package
-```
-
-2. Copy the generated WAR file to Tomcat's `webapps` directory:
-
-```bash
-cp target/SmartWebPortal.war /path/to/tomcat/webapps/
-```
-
-3. Start Tomcat:
-
-```bash
-/path/to/tomcat/bin/startup.sh
-```
-
-4. Open the application in a browser:
+Maven compiles the project and generates:
 
 ```text
-http://localhost:8080/SmartWebPortal/
+target/SmartWebPortal.war
 ```
 
-### Option 2: Run using your IDE
+## Deploy on Apache Tomcat
 
-- Import the Maven project into IntelliJ IDEA or Eclipse.
-- Configure a Tomcat local server.
-- Deploy the app and run it from the IDE.
+Deploy the generated WAR to the Tomcat `webapps` directory. On Windows PowerShell, for example:
+
+```powershell
+Copy-Item .\target\SmartWebPortal.war C:\path\to\tomcat\webapps\
+```
+
+Start Tomcat using its startup script (from the Tomcat `bin` directory):
+
+```powershell
+.\startup.bat
+```
+
+Tomcat is configured to use port **8081** for this application. If necessary, confirm the HTTP Connector in `conf/server.xml` uses port `8081`, and restart Tomcat after changing it. The WAR filename sets the application context path to `/SmartWebPortal`.
+
+## Run the Application
+
+Once Tomcat has started and deployed the WAR, open the application in a browser using the URLs below. Alternatively, import the Maven project into IntelliJ IDEA or Eclipse, configure a local Tomcat 11 server on port `8081`, and deploy the application from the IDE.
+
+## Application URLs
+
+| Page | URL |
+| --- | --- |
+| Application | `http://localhost:8081/SmartWebPortal/` |
+| Login | `http://localhost:8081/SmartWebPortal/login.html` |
+| Registration | `http://localhost:8081/SmartWebPortal/register.html` |
+
+## Configuration Notes
+
+- Port `8081` is used for Tomcat because port `8080` is occupied by Jenkins.
+- The database connection uses MySQL on port `3306` by default.
+- The connection URL, user, and password can be supplied through `DB_URL`, `DB_USER`, and `DB_PASSWORD`.
+- The servlet API is provided by Tomcat; it is not packaged as an application dependency.
+- Do not store real credentials in source control.
 
 ## Application Flow
 
-### Registration
+- **Registration:** Users submit their name, email, and password. The password is hashed using BCrypt before it is stored.
+- **Login:** The submitted credentials are validated against the stored password hash. A session is created after successful authentication.
+- **Dashboard:** Authenticated users are directed to dashboard views appropriate to their role.
+- **Profile and preferences:** Users can manage profile information and save preferences using cookies and session data.
 
-A new user submits their name, email, and password. The password is hashed using BCrypt before storage in the database.
+## Security
 
-### Login
+The application hashes passwords with BCrypt, uses `HttpSession` for authenticated sessions, and applies role-aware access for administrative pages. Cookies support remember-me and saved-preference flows.
 
-The user enters their email and password. The system retrieves the user record, verifies the hash, and creates a session if successful.
+For production use, consider adding HTTPS, CSRF protection, stronger centralized input validation and authorization, encrypted secret management, database connection pooling, authentication-event logging, and login rate limiting.
 
-### Dashboard Access
-
-After a valid login, the user is redirected to a dashboard. Role-specific content is displayed based on the account type.
-
-### Admin Features
-
-Users with the role `ADMIN` can access administrative pages and privileged functionality.
-
-### Profile and Preferences
-
-Users can view and edit their profile details and save preference information using cookies and session data.
-
-## Security Features
-
-This project includes a few important security practices:
-
-- Passwords are never stored in plain text
-- BCrypt is used for hashing and verification
-- User sessions are tracked with `HttpSession`
-- Authorization is role-aware
-- Cookies are used responsibly for saved preferences and remember-me flows
-
-## Recommended Production Enhancements
-
-For real-world deployment, consider the following improvements:
-
-- enable HTTPS everywhere
-- add CSRF protection
-- validate and sanitize all user inputs
-- implement centralized role validation
-- encrypt sensitive configuration values
-- use connection pooling for production databases
-- add logging and auditing for authentication events
-- implement rate limiting on login attempts
 
 ## Development Notes
 
-The project is intentionally simple and educational. It demonstrates a classic servlet-based architecture without the complexity of modern Java frameworks such as Spring Boot.
-
-This makes it an excellent reference for understanding:
-
-- servlet lifecycle
-- request dispatching
-- database access patterns
-- session management
-- servlet authentication basics
-
-## License
-
-This project is intended for educational and demonstration purposes.
+The project intentionally uses a classic servlet-based architecture rather than a framework such as Spring Boot. It provides examples of servlet lifecycle and request handling, JDBC-based database access, and session management.
 
 ## Contributing
 
-Contributions are welcome. If you would like to improve the project, please:
+Contributions are welcome. Create a feature branch, make and test your changes locally, then submit a pull request with a clear description.
 
-1. create a feature branch
-2. make your changes
-3. test the application locally
-4. submit a pull request with a clear description of the enhancement
-
-## Contact
-
-For support or collaboration, please contact the project maintainer via the repository owner or your organization’s preferred communication channel.
-
-## Summary
-
-Smart Cookie Web Portal is a practical Java web application that brings together authentication, database persistence, cookies, role-based access, and web UI logic in a single project. It is suitable for learning web application security, Java EE basics, and building servlet-based portals from scratch.
